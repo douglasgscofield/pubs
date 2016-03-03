@@ -9,9 +9,6 @@ Richert-et-al
 
 [R-language](https://www.r-project.org) scripts for performing various analyses described in Richert *et al.*.
 
-Chl-*a* trace integration
-
-
 
 
 Scofield et al. American Naturalist 2012
