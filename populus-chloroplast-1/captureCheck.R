@@ -1,3 +1,11 @@
+# Compare chloroplast SNP frequencies between pools from different plant
+# species and check for the possibility of chloroplast capture by one or
+# more individuals.  The method is based on frequencies from pooled data so
+# probably of limited usefulness for individuals.
+
+# Copyright (c) 2013 Douglas G. Scofield, douglas.scofield@ebc.uu.se
+# Uppsala University (Umea University at the time of authorship)
+
 captureCheck = function(snps,     # data.frame of SNPs for a group of species
                          T = 0.95, # threshold frequency for fixed SNP
                          Tp = 0.1, # threshold low frequency for contaminant SNP

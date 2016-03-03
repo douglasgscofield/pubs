@@ -4,20 +4,22 @@ Publication materials
 Repository for scripts, etc. associated with publications.
 
 
-populus-chloroplast-1
----------------------
+Richert-et-al
+-------------
 
-Scripts and download links for Scofield DG, Wu Z-Q, Lamothe M, Jansson S, Isabel N,
-Ingvarsson PK and Thompson SL, Diving into the pool: NGS sequencing of bulked libraries
-reveals chloroplast capture in North American _Populus_.
+[R-language](https://www.r-project.org) scripts for performing various analyses described in Richert *et al.*.
+
+Chl-*a* trace integration
 
 
-Scofield et al. Am Nat 2012
----------------------------
 
-[R-language](http://www.r-project.org) scripts for performing diversity analyses described in Scofield DG, Smouse PE, Karubian J
+
+Scofield et al. American Naturalist 2012
+----------------------------------------
+
+[R-language](https://www.r-project.org) scripts for performing diversity analyses described in Scofield DG, Smouse PE, Karubian J
 and Sork VL, Using alpha, beta and gamma diversity measures to characterize seed dispersal
-by animals, _American Naturalist_, are available under the `dispersal` repository:
+by animals, _American Naturalist_ **180**:719-732, are available under the `dispersalDiversity` repository:
 
-<https://github.com/douglasgscofield/dispersal>
+<https://github.com/douglasgscofield/dispersalDiversity>
 
