@@ -4,10 +4,10 @@ Publication materials
 Repository for scripts, etc. associated with publications.
 
 
-Richert-et-al
--------------
+Richert-et-al-1
+---------------
 
-[R-language](https://www.r-project.org) scripts for performing various analyses described in Richert *et al.*.
+[R-language](https://www.r-project.org) scripts for performing various analyses described in Richert *et al.* Spring comes to the Antarctic Ocean: Surface phytoplankton biomass shapes bacterioplankton community diversity far into the dark ocean.
 
 
 
