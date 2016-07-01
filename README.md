@@ -20,3 +20,8 @@ by animals, _American Naturalist_ **180**:719-732, are available under the `disp
 
 <https://github.com/douglasgscofield/dispersalDiversity>
 
+
+Brännström et al.
+-----------------
+
+OTU clustering from IonTorrent IonXpress amplicon sequences.
