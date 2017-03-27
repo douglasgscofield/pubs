@@ -1,8 +1,14 @@
 #!/bin/bash
+
+# Arg 1: tag to add to analysis
+# Arg 2: Read trim length argument
+# Arg 3: Expected-errors value for -fastq_filter; settled on 1.5
+
 set -x
 
 TAG=${1:?Must provide analysis tag as first argument}
-EE=${2:?Must provide EE value as second argument}
+TrimLength=200
+ExpectedErrors=1.5
 
 DIR=$PWD
 
@@ -48,6 +54,7 @@ USEARCH=$DIR/usearch8.1.1861_i86osx32
 #
 function edgar_pipeline() {
     L=$1
+    EE=$2
     tag="edgar_${TAG}_${L}_${EE}"
     LOG=${tag}.log
     echo "*** Edgar pipeline" > $LOG
@@ -96,7 +103,6 @@ function edgar_pipeline() {
     $USEARCH -usearch_global $ALLREADS -db $OTUS -strand plus -id 0.97 -otutabout otutab.${tag}.txt -biomout otutab.${tag}.json >> $LOG 2>&1
 
 }
-#edgar_pipeline 100
-#edgar_pipeline 150
-edgar_pipeline 200
+
+edgar_pipeline $TrimLength $ExpectedErrors
 
