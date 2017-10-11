@@ -1,0 +1,18 @@
+#OTU ID	edg_S1	edg_S2	edg_S3	edg_S4	edg_S5	edg_S6	edg_S8
+OTU_usearch_20171011_200_1.5_minsize3_2	1609	4.121e+04	1	8980	0	4301	0
+OTU_usearch_20171011_200_1.5_minsize3_17	2.079e+04	2	0	3	0	0	0
+OTU_usearch_20171011_200_1.5_minsize3_1	40	9	4.286e+04	2	4.275e+04	0	1
+OTU_usearch_20171011_200_1.5_minsize3_13	4	346	0	68	0	43	0
+OTU_usearch_20171011_200_1.5_minsize3_12	1	0	108	0	158	0	0
+OTU_usearch_20171011_200_1.5_minsize3_3	0	44	0	1.523e+04	2	3.349e+04	0
+OTU_usearch_20171011_200_1.5_minsize3_10	0	0	24	0	28	0	0
+OTU_usearch_20171011_200_1.5_minsize3_9	0	0	75	0	61	0	0
+OTU_usearch_20171011_200_1.5_minsize3_15	0	0	9	0	13	0	0
+OTU_usearch_20171011_200_1.5_minsize3_16	0	0	5	0	3	0	0
+OTU_usearch_20171011_200_1.5_minsize3_5	0	0	0	6209	0	0	0
+OTU_usearch_20171011_200_1.5_minsize3_7	0	0	0	393	0	821	0
+OTU_usearch_20171011_200_1.5_minsize3_4	0	0	0	133	0	218	0
+OTU_usearch_20171011_200_1.5_minsize3_11	0	0	0	11	0	27	0
+OTU_usearch_20171011_200_1.5_minsize3_8	0	0	0	12	0	16	0
+OTU_usearch_20171011_200_1.5_minsize3_14	0	0	0	8	0	0	0
+OTU_usearch_20171011_200_1.5_minsize3_6	0	0	0	52	0	123	0

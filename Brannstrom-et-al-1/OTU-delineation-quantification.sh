@@ -9,6 +9,7 @@ set -x
 TAG=${1:?Must provide analysis tag as first argument}
 TrimLength=200
 ExpectedErrors=1.5
+MinSize=2
 
 DIR=$PWD
 
@@ -55,7 +56,7 @@ USEARCH=$DIR/usearch8.1.1861_i86osx32
 function edgar_pipeline() {
     L=$1
     EE=$2
-    tag="edgar_${TAG}_${L}_${EE}"
+    tag="usearch_${TAG}_${L}_${EE}_minsize${MinSize}"
     LOG=${tag}.log
     echo "*** Edgar pipeline" > $LOG
     echo "*** http://drive5.com/usearch/manual/upp_454.html" >> $LOG
@@ -94,7 +95,7 @@ function edgar_pipeline() {
     OUT=otus1.${tag}.fa
     echo "*** OTU clustering $F to $OUT" >> $LOG
     echo "***" >> $LOG
-    $USEARCH -cluster_otus $F -minsize 2 -otus $OUT -relabel OTU_${tag}_ >> $LOG 2>&1
+    $USEARCH -cluster_otus $F -minsize $MinSize -otus $OUT -relabel OTU_${tag}_ >> $LOG 2>&1
     OTUS=$OUT
 
     # map reads to OTUs for quantification

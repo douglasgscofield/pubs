@@ -6,7 +6,9 @@ reload = function(doit=FALSE) if (doit) source(paste0(workprefix, ".R"))
 library(RColorBrewer)
 library(Cairo)
 
-dataprefix = "edgar_20160602_first_200_1.5"
+#dataprefix = "usearch_20160602_200_1.5_minsize2"  # -minsize 2 clustering
+dataprefix = "usearch_20171011_200_1.5_minsize3"  # -minsize 3 clustering
+
 pfile = paste0("otutab.", dataprefix, ".txt")
 #ptree.all = "ttt.tre"
 #ptree.OTUs.default = "sanger-plus-OTUs.muscle.out.default.no-sanger.degap.tre"
@@ -32,6 +34,7 @@ read.otu.matrix = function(file) {
 
 otu.sparklines = function(dat, do.pdf=FALSE) {
     at.midpoint = TRUE  # center boxes vertically at their midpoints
+    n.otus = nrow(dat)
     dat = dat[nrow(dat):1, ]  # reverse rows
     # scale each sample by its sum, so transform to [0, 1]
     dat = scale(dat, center=FALSE, scale=(apply(dat, 2, sum)))
@@ -41,7 +44,7 @@ otu.sparklines = function(dat, do.pdf=FALSE) {
     ybase = 1:nrow(dat)
     yscale = 1.5 #1 #0.8
 
-    if (do.pdf) CairoPDF(file=paste0("otu_sparklines_", dataprefix, ".pdf"), width=4.5, height=6)
+    if (do.pdf) CairoPDF(file=paste0("otu_sparklines_", dataprefix, ".pdf"), width=4.5, height=1+(n.otus)*(5/32))
 
     def.par = par(no.readonly=TRUE)
     layout(matrix(c(0, 2, 3, 1), 2, 2, byrow=TRUE),
@@ -51,6 +54,10 @@ otu.sparklines = function(dat, do.pdf=FALSE) {
     cols = colfunc(nrow(dat))
     plot.new()
     plot.window(xlim=this.xlim, ylim=this.ylim)
+
+    # clustering; euclidean too dependent on frequency and misclusters rare OTUs
+    # better to use 'canberra' which favours presence/absence but is not exclusively
+    # so as is 'binary'
 
     clustering.method = "canberra"
 
@@ -87,7 +94,7 @@ otu.sparklines = function(dat, do.pdf=FALSE) {
         rect(x0, y0, x1, y1, col=cols[r], border=NA)
     }
 
-    y0 = max(ybase) + 3.0
+    y0 = max(ybase) + (1.5 + n.otus*(1.5/32))
     text(x=xbase - 0.5, y=y0, labels=new.otu.longsites, pos=1, cex=0.8, xpd=NA)
     text(x=xbase - 0.5, y=y0 - 1, labels=new.otu.longspecies, font=3, pos=1, cex=0.8, xpd=NA)
 
@@ -95,15 +102,6 @@ otu.sparklines = function(dat, do.pdf=FALSE) {
     x0 = -0.8
     text(x=x0, y=ybase - 0.5, labels=rownames(dat), pos=4, cex=0.6, xpd=NA)
     y = ybase - 1
-
-    # clustering; euclidean too dependent on frequency and clusters rare OTUs
-    # better to use 'canberra' (better) or 'binary' which are more presence/absense
-    # 
-    # how do we represent phylogeny in this?  or do we?
-    # maybe cluster by site in this figure, then leave OTUs as they are in the table
-    # then a separate figure which plots OTU phylogeny together with OTU clustering based on sharing
-    #     the dendextend packages can help
-    #
 
     # plot at top
     opa2 = par(mar=c(1.5, 1.5, 0.0, 0.0))
