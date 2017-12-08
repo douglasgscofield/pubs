@@ -28,3 +28,15 @@ OTU clustering of IonTorrent IonXpress amplicon sequences via [USEARCH], and add
 
 [R]:          https://www.r-project.org
 [USEARCH]:    http://drive5.com/usearch
+
+
+Dahlo-et-al-1
+-------------
+
+[R] code and data for generating figures from Dahlö et al., "Tracking the NGS
+revolution: managing life science research on shared high-performance computing
+clusters".  Most of these were written to work with the original non-anonymised
+datasets (those generating figures 1, 4, S1), so may have some trouble working
+with the anonymised datasets.  Datasets for Figures 2, 3 and 5 are included
+here.
+
