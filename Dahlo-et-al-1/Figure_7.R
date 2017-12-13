@@ -1,14 +1,17 @@
 
-# example run:
-# Rscript Figure_7.R 1 7 '2010-07-01' '2017-01-01'
+# example run to crunch the numbers, with recalculate = 1 below:
+# Rscript Figure_7.R 2 7 '2010-07-01' '2017-01-01'
+# Rscript Figure_7.R 3 7 '2010-07-01' '2017-01-01'
+
+# example run to make the plots, with recalculate = 0 below:
+# Rscript Figure_7.R 2 7 '2010-07-01' '2017-01-01'
+
 
 # rm(list=ls())
 library("RSQLite")
-library("Rcpp")
 library("RColorBrewer")
 
 # connect to the db
-# jobs_db = dbConnect(dbDriver("SQLite"),"/scratch/dahlo/sqlite3/jobs_stats.sqlite")
 jobs_db = dbConnect(dbDriver("SQLite"),"../data/efficiency.sqlite")
 
 # should the number be recalculated again? Only if the algorithm has changed or the db has been updated.
@@ -27,6 +30,8 @@ dateEnd = args[4]
 
 # the part below collects the data and calculates everything. It saves the workspace at the end of the if statement, so unless you change anything in the number crunching you should just skip the whole if statement and load the workspace instead, as it does on lint ~250.
 if(recalculate){
+
+	library("Rcpp")
 
 
 
@@ -232,7 +237,7 @@ rollmedian <- function(x,window_size) {
 
 
 
-for(type in c(2,3,1)){
+for(type in c(2,3)){
 
 	load(paste("percentiles.", type, ".", timeperiod, ".RData", sep=''))
 	print(paste("NOTE: Possible date span from saved data: ",min(data$date),' - ',max(data$date),sep=''))
