@@ -5,11 +5,9 @@
 
 
 # rm(list=ls())
-# library('RMySQL')
 library("RSQLite")
 library('stringr')
 library('RColorBrewer')
-library('MASS')
 
 # for devel use
 dateStart = "2016-01-01"
@@ -240,35 +238,9 @@ log_base = 2
 cpu_log = log(cpu, base=log_base)
 mem_log = log(mem, base=log_base)
 
-
-### create the surface plot
-
-# bins
-nbins <- 1 # production
-# nbins <- 300 # devel
-
-# KernSmooth kde with abkde estimated bandwidth
-surf <- lapply(split(data.frame(cpu_log[1:1000], mem_log[1:1000]), weighted_data$type[1:1000]),
-    function(x){ 
-   
-            bandwidth=c(1.5,1.5)
-            kde2d(x[,1], x[,2], n=nbins, h=bandwidth)
-        })
-
-# rescale the heatmap intensities
-orgsurf = surf
-# surf = orgsurf
-for(i in 1:length(surf)){
-	temp = data.frame(surf[[i]])
-	surf[[i]]$z = data.matrix(temp[,3:dim(temp)[2]]/100)
-
-
-
-}
-
-# make the axis go from 0 - 101 to make it even
-ax = seq(min(cpu_log) , max(cpu_log), length.out=nbins+1)
-ay = seq(min(mem_log) , max(mem_log), length.out=nbins+1)
+# # make the axis go from 0 - 101 to make it even
+# ax = seq(min(cpu_log) , max(cpu_log), length.out=nbins+1)
+# ay = seq(min(mem_log) , max(mem_log), length.out=nbins+1)
 
 
 
@@ -276,28 +248,6 @@ ay = seq(min(mem_log) , max(mem_log), length.out=nbins+1)
 names = c('Non-NGS projects', 'NGS projects', 'Platform')
 colors = c('YlOrBr', 'BuGn', 'Blues')
 plot_order = c("UPPNEX", "UPPMAX")
-
-
-
-
-
-
-
-
-
-# prepare to scale the colorRampPalette after the size of category. 
-count_sum = rep(NA, length(surf))
-for(i in 1:length(surf)){
-	count_sum[i] = sum(data$corecount[data$type==groups[i]])
-	
-}
-
-
-
-
-
-
-
 
 
 
@@ -363,11 +313,8 @@ if(classify == 1){
 # customize plot
 # color gradient
 plot_opt_ncol = 100 # the number of colors the heat map should have
-plot_opt_image = 0 # plot the heat map?
-plot_opt_scale_image = 0 # scale the heat man intensity after group size?
 plot_opt_points = 1 # plot the data points?
 plot_opt_subplot_titles = 1 # plot title for each subplot?
-plot_opt_contour = 0 # plot the contours in the heat map?
 plot_opt_grid = 1 # plot a grid in the plot?
 plot_opt_axis = 1 # plot axes in the plot?
 plot_opt_save_to_file = 1 # save to a file?# plot uppmax and uppnex
@@ -396,7 +343,6 @@ if(plot_opt_save_to_file == 1){
 for(i in 1:length(plot_order)){
 
     # pick out the index of surf that contains the project type we are interested in
-    surf_idx = which(names(surf)==plot_order[i])
     g_idx = which(groups==plot_order[i])
 
     
@@ -406,21 +352,10 @@ for(i in 1:length(plot_order)){
 
 	# 'increase the exposure'
 	# col = c(col, rep(col[length(col)], 5000))
-	
-	if(plot_opt_scale_image == 1){
-    	# scale the colorRampPalette after the size of category. 
-    	col = col[1: ceiling(plot_opt_ncol * count_sum[surf_idx] / max(count_sum)) ]
-    }
+		
     	
-    	
-
-    if(plot_opt_image == 1){
-        # plot the surface
-        image(surf[[surf_idx]], col=col , useRaster=TRUE, xlab="", ylab="", axes=FALSE, ylim=c(floor(log2(min(mem))), ceiling(log2(max(mem))) ), xlim=c(floor(log2(min(cpu))), ceiling(log2(max(cpu))) ) )
-        
-    }else{
-    	plot(c(0,0), col='#FFFFFF00', xlab="", ylab="", axes=FALSE, ylim=c(floor(log2(min(mem))), ceiling(log2(max(mem))) ), xlim=c(floor(log2(min(cpu))), ceiling(log2(max(cpu))) ) )
-    }
+    # open the plot surface
+	plot(c(0,0), col='#FFFFFF00', xlab="", ylab="", axes=FALSE, ylim=c(floor(log2(min(mem))), ceiling(log2(max(mem))) ), xlim=c(floor(log2(min(cpu))), ceiling(log2(max(cpu))) ) )
 
 
 
@@ -435,12 +370,6 @@ for(i in 1:length(plot_order)){
     if(plot_opt_subplot_titles == 1){
         # add title to subplot
         title(names[g_idx])
-    }
-
-
-    if(plot_opt_contour == 1){
-        # draw a contour
-        contour(surf[[surf_idx]], add=T, lwd=.3, drawlabels=FALSE, nlevels=10)
     }
 
 
