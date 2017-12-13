@@ -226,7 +226,8 @@ for(i in 1:length(surf)){
 
 }
 
-
+# set dot color
+weighted_data$class_col = "black"
 
 
 # customize plot
