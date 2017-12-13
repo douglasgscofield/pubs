@@ -251,65 +251,6 @@ plot_order = c("UPPNEX", "UPPMAX")
 
 
 
-
-
-
-
-# color dots by analysis type?
-classify = 0
-weighted_data$class_col = "black"
-if(classify == 1){
-
-    # read the file
-    class = readLines("../data/B_SNIC.txt")
-
-    # init
-    types = c(4:8) # De novo, RNA, Methylation, WGS, Metagenomics
-    type_col = brewer.pal(length(types),"Accent")
-
-    # parse each line
-    for(line in class){
-
-        # remove all spaces
-        line = gsub(" ", "", line)
-        
-        # split on tabs
-        line = unlist(strsplit(line, "\t"))
-        
-
-        # process each analysis type
-        for(type in 1:length(types)){
-
-            # split the project list on commas
-            current = unlist(strsplit(line[types[type]], ','))
-
-            # for each project
-            for(proj in current){
-
-                # check if the project is present in the statistics
-                weighted_data$class_col[weighted_data$pid==proj] = type_col[type]
-
-            }
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # customize plot
 # color gradient
 plot_opt_ncol = 100 # the number of colors the heat map should have
