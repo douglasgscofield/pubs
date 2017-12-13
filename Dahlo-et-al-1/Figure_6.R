@@ -5,14 +5,9 @@
 
 
 # rm(list=ls())
-# library('RMySQL')
 library("RSQLite")
 library('stringr')
-library('foreach')
-library('doMC')
 library('RColorBrewer')
-library('MASS')
-library('hash')
 library('KernSmooth')
 library('abkde')
 
@@ -158,6 +153,36 @@ if(0){
 
 }
 
+
+
+
+
+
+### duplicate rows to increase the weight of projects with lots of logged jobs (time wise)
+
+# get the normalize factor. The most logged project will be repeated X times, the others will be repeated proportionally to that (min value 1 though)
+X = 10
+norm = data.frame(max=as.double(), type=as.character(), stringsAsFactors="FALSE")
+for(i in 1:length(groups)){
+    norm = rbind(norm, data.frame(max=max(data$corecount[data$type==groups[i]])/X, type=groups[i], stringsAsFactors="FALSE"))
+}
+
+# init
+indexes = c()
+
+# for each project
+for(i in 1:dim(data)[1]){
+
+    # create an array of indexes
+    # if a project has a lot of logged jobs, its index number get repeated multiple times, to increase the weight of the project
+
+    # log10 corecount normailization
+    indexes = c(indexes, rep(i, max( 1, log10(data$corecounts[i]) )) )
+
+}
+
+# create the weighted data dataframe from the index array
+weighted_data = data[indexes,]
 
 cpu = weighted_data$cpu
 mem = weighted_data$mem
