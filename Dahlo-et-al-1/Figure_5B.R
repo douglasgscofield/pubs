@@ -250,6 +250,9 @@ colors = c('YlOrBr', 'BuGn', 'Blues')
 plot_order = c("UPPNEX", "UPPMAX")
 
 
+# set dot color
+weighted_data$class_col = "black"
+
 
 # customize plot
 # color gradient
