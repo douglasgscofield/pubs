@@ -24,7 +24,7 @@ by animals, _American Naturalist_ **180**:719-732, are available under the `disp
 Brannstrom-et-al-1
 ---------------
 
-OTU clustering of IonTorrent IonXpress amplicon sequences via [USEARCH], and additional [R] scripts for analysis.
+OTU clustering of IonTorrent IonXpress amplicon sequences via [USEARCH], and additional [R] scripts for analysis.  Includes alignments and phylogenies underlying figures.
 
 [R]:          https://www.r-project.org
 [USEARCH]:    http://drive5.com/usearch
