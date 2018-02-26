@@ -1,15 +1,10 @@
-# vim: set number:
+# Generate Figures 3, 4 and S1 for Dahlö et al.  Figure 3 plots software
+# installations over time, Figure 4 plots monthly core hours booked by
+# Completed and Timeout jobs, and Figure S1 plots monthly core hours of all
+# jobs, by SLURM end state.
+#
+# Figure 3 is plotted using data from "Figure_3_data_installations.txt".
 
-# TODO: stats for unincluded jobs --
-
-# 1. COMPLETED < 60 s
-#
-#     See totaltime.dat and the file totaltime_20151127_2015-11-01.txt (one example)
-#
-# 2. Same totaltime.dat for non-completed jobs
-#
-# 3. Plot/table of job class and duration statistics
-#
 
 fig.type = ifelse(exists('fig.type'), fig.type, 'pdf')
 fig.create = switch(fig.type, pdf = grDevices::pdf,
@@ -65,7 +60,7 @@ master.do.all = function(include.all.data = TRUE) {
 
 
 options(prompt = "Figure_3_4_S1> ", stringsAsFactors = FALSE)
-reload = function(doit = FALSE) if (doit) source("Figure_3_4_S1")
+#reload = function(doit = FALSE) if (doit) source("Figure_3_4_S1")
 library(dplyr)
 library(stringr)
 library(lattice)
@@ -100,7 +95,7 @@ tall.height = 120 / 25.4
 #
 # note we installed the 1000-genomes datasets, Simons, Blast databases, etc.
 
-install.dat.file = "Figure_3_data.txt"
+install.dat.file = "Figure_3_data_installations.txt"
 install.type = c("oi", "ou", "bi", "bu")
 install.type.long = setNames(c("Non-NGS new installs", "Non-NGS updates",
                                "NGS-related new installs", "NGS-related updates"),

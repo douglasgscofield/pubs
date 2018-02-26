@@ -1,7 +1,12 @@
+# Generate Figure 1 from Dahlö et al, tracking project growth over time.  Uses
+# project start-end dates to generate IRanges (from the BioConductor project),
+# the 'coverage' of which is used to count active projects.
+
+
 options(prompt="project_growth> ", stringsAsFactors=FALSE)
 #!/sw/apps/R/x86_64/3.0.2/bin/Rscript
 
-reload = function(doit=FALSE) if (doit) source("project_growth.r")
+#reload = function(doit=FALSE) if (doit) source("project_growth.r")
 
 #source("http://bioconductor.org/biocLite.R")
 #biocLite("IRanges")
@@ -18,7 +23,8 @@ library('plotrix')
 source('legendx.R')
 
 # data file containing names of NGS projects allocated SNIC resources
-bsnic <- scan(file='../data/B_SNIC.txt', what=character())
+# does not exist for anonymised data
+#bsnic <- scan(file='../data/B_SNIC.txt', what=character())
 
 plot_to_file = 1
 

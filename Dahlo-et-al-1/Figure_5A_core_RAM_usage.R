@@ -1,5 +1,7 @@
+# Plots Figure 5A from Dahlö et al., core and RAM usage histograms.  Uses data from "Figure_5A_data_core_RAM_usage.RData"
+
 options(prompt='Figure_5A> ', scipen=10)
-reload <- function(doit=FALSE) if (doit) source('Figure_5A.R')
+reload <- function(doit=FALSE) if (doit) source('Figure_5A_core_RAM_usage.R')
 
 library('stringr')
 library('RColorBrewer')

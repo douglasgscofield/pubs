@@ -1,3 +1,6 @@
+# Plot Figure 2 from Dahlö et al, containing support ticket counts, unique
+# submitters, and tickets per submitter over time, using data from the
+# tickets.dat file, "Figure_2_data_support_tickets.txt".
 
 figure.type = 'pdf'
 figure.create = switch(figure.type, pdf = grDevices::pdf,
@@ -11,7 +14,7 @@ study.min.duration = 60
 output.file.tag = paste0(format(Sys.time(), '%Y%m%d'), '_', study.end.date)
 
 options(prompt = "tix> ", stringsAsFactors = FALSE)
-reload = function(doit = FALSE) if (doit) source("Figure_2.R")
+#reload = function(doit = FALSE) if (doit) source("Figure_2.R")
 library(RColorBrewer)
 
 # Figure sizes
@@ -37,7 +40,7 @@ tall.height = 120 / 25.4
 # Produce 3-panel plot of support ticket submission
 #
 
-tickets.dat = "Figure_2_data.txt"
+tickets.dat = "Figure_2_data_support_tickets.txt"
 plot.tickets.data = function(file = tickets.dat, do.pdf=FALSE) {
     dat = read.delim(file)
     dat$tu_ngs = dat$t_ngs / dat$u_ngs
