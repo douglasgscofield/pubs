@@ -1,3 +1,13 @@
+#  Customized version of R source for legend() to add a legend to a plot,
+#  beginning with Ben Bolker's
+#  http://www.math.mcmaster.ca/bolker/R/misc/legendx.R.  Here the function name
+#  is changed to be legendx(), and two additional arguments are added:
+#
+#      title.font : modify the font of the title specifically
+#      box.hex    : expansion factor for box height alone
+#
+#  Douglas G Scofield, douglasgscofield@gmail.com
+
 #  File src/library/graphics/R/legend.R
 #  Part of the R package, http://www.R-project.org
 #
