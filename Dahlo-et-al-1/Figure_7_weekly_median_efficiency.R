@@ -1,3 +1,6 @@
+# Generate Figure 7 from Dahlö et al, plotting the weekly median efficiency of jobs,
+# where each week is plotted as a point. A horizontal trend line is the smoothed
+# LOESS regression of the dots.
 
 # example run to crunch the numbers, with recalculate = 1 below:
 # Rscript Figure_7.R 2 7 '2010-07-01' '2017-01-01'
