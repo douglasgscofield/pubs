@@ -1,3 +1,7 @@
+# Generate Figure 6 from Dahlö et al, plotting the mean CPU and RAM usage of all jobs,
+# as a percentage of what the jobs booked. Each job is plotted as a semi-transparent
+# point, making areas with many overlapping jobs darker.
+
 # $ module load R/3.2.3
 
 # example run:
