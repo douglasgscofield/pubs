@@ -1,3 +1,7 @@
+# Generate Figure 5B from Dahlö et al, plotting the absolute CPU and RAM usage of all jobs.
+# Each job is plotted as a semi-transparent point, making areas with many overlapping
+# jobs darker. Both axes are scaled by log2.
+
 # $ module load R/3.2.3
 
 # example run:
