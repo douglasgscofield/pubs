@@ -3,7 +3,10 @@ Picea abies 1.0 sequence capture probe sites
 
 See:
 
-Vidalis A, Scofield DG, Neves LG, Bernhardsson C, García-Gil MR, Ingvarsson PK.  Design and evaluation of a large sequence-capture probe set and associated SNPs for diploid and haploid samples of Norway spruce (_Picea abies_).
+Vidalis A, Scofield DG, Neves LG, Bernhardsson C, García-Gil MR, Ingvarsson PK.
+2018.  Design and evaluation of a large sequence-capture probe set and
+associated SNPs for diploid and haploid samples of Norway spruce (_Picea
+abies_).  bioRxiv <https://doi.org/10.1101/291716>
 
 All files are anchored to the _Picea abies_ 1.0 genome assembly and annotation.
 Where a probe falls within a gene model, the model is listed (e.g,
